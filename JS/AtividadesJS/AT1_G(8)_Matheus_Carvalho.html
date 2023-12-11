@@ -1,0 +1,52 @@
+<script src=
+"https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Locadora</title>
+
+</head>
+<body style="text-align:center;">
+    <h1 style="color:rgb(87, 0, 128);">  
+            Locadora
+        </h1>
+    <p id="Geralminutos">
+    </p>
+    Minutos:
+    <input class="mins"/>
+    <br>
+    <br>
+    <button onclick="horas()">
+      Transformar em Horas
+    </button>
+    <button onclick="reiniciar()">
+    Tentar Novamente</button>
+    <p id="minutos">
+    </p>
+    <script>
+        var minu = document.getElementById('Geralminutos');
+        var elemento = document.getElementById("body");
+        minu.innerHTML =
+"Clique no Botão 'Transformar em horas' para transformar minutos em horas e minutos.";
+  
+        function horas() {
+            // pegando o valor do input
+            var total = $('.mins').val();
+            // pegando as horas (Math.floor vai arredondar o valor das horas)   
+            var hrs = Math.floor(total / 60);
+            // pegando os minutos
+            var min = total % 60;
+            $('#minutos').html(hrs + 
+                       " Hora(s) e " + min + " Minuto(s)");
+                       document.getElementById("min").value ="";
+        }
+        function reiniciar(){
+          document.getElementById('minutos').innerHTML = "";
+        }
+    </script>
+</body>
+  
+</html>

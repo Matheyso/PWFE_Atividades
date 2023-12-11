@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Programa Cálculo das Parcelas</title>
+</head>
+<div style="margin-top:130px;border-radius: 10px; border-color: rgb(137, 135, 16);width: 400px;margin-left:520px;background-color:rgb(98, 0, 158);">
+<br>
+<body style="text-align:center; background-color: rgb(255, 220, 255);">
+  <h1 style="color: white;">Programa Cálculo das Parcelas</h1>
+
+  <pre style="color: white;">Preço R$: <input type="text" id="inputPreco" style="border-radius: 8px;"></pre>
+  <button onclick="exibirParcelas()" style="border-radius: 8px; background-color: rgb(140, 0, 126);color: white;">Mostrar Parcelas</button>
+  <p id="opPag" style="color: white;"></p>
+  <ul id="parcelas" style="list-style-type: none; padding: 0; color: white;"></ul>
+  <br>
+</div>
+  <script>
+    function exibirParcelas() {
+      document.getElementById("opPag").textContent = "Opções de Pagamento: "
+      var preco = parseFloat(document.getElementById("inputPreco").value);
+      var parcelas = document.getElementById("parcelas");
+      parcelas.innerHTML = "";
+
+
+      if (isNaN(preco) || preco <= 0) {
+        parcelas.innerHTML = "<li>Insira um valor válido.</li>";
+      } else {
+        for (var i = 1; i <= 10; i++) {
+          var valorParcela = preco / i;
+          parcelas.innerHTML += "<li>" + i + "x" + " de R$" + valorParcela.toFixed(2) + " </li>";
+        }
+      }
+    }
+  </script>
+</body>
+</html>

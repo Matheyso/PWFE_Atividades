@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brinquedoteca</title>
+</head>
+<body style="text-align:center;">
+  <h1 style="color:rgb(87, 0, 128);">
+    Brinquedoteca
+  </h1>
+  <!--Caixa para inserir nome-->
+  Insira um nome: 
+  <input type="text" id="nome">
+  <br>
+  <br>
+  <!--Caixa para inserir idade-->                                                                                                   
+  Insira uma idade: 
+  <input type="text" id="idade"> 
+  <br>
+  <br>
+  <!--Invoca o método buscar() ao clicar no botão-->
+  <button onclick="buscar()">
+    Buscar
+  </button>
+  <button onclick="mostrarListaNomes()">
+    Mostrar Lista
+  </button>
+  <button onclick="reiniciar()">
+    Reiniciar
+  </button>
+  <button onclick="limparLocalStorage()">
+    Limpar Local Storage
+  </button>
+
+  <p id="nm"></p>
+  <p id="reini"></p>
+
+  <script>
+    var listaNomes = [];
+
+    // Função para buscar e salvar os dados na Local Storage
+    function buscar() {
+      var nome = document.getElementById("nome").value;
+      var idade = document.getElementById("idade").value;
+      var crianca = { nome: nome, idade: idade };
+      listaNomes.push(crianca);
+
+      // Salvar a lista na Local Storage
+      localStorage.setItem('listaNomes', JSON.stringify(listaNomes));
+
+      var mostrarLista = document.getElementById("nm");
+      mostrarLista.innerHTML = "Lista das Criancas: <br>";
+
+      for (var i = 0; i < listaNomes.length; i++) {
+        mostrarLista.innerHTML += "Nome: " + listaNomes[i].nome + " Idade: " + listaNomes[i].idade + "<br>";
+      }
+    }
+
+    // Função para carregar os dados da Local Storage
+    function mostrarListaNomes() {
+      var listaNomesLocalStorage = localStorage.getItem('listaNomes');
+      if (listaNomesLocalStorage) {
+        listaNomes = JSON.parse(listaNomesLocalStorage);
+        var mostrarLista = document.getElementById("nm");
+        mostrarLista.innerHTML = "Lista das Criancas: <br>";
+        for (var i = 0; i < listaNomes.length; i++) {
+          mostrarLista.innerHTML += "Nome: " + listaNomes[i].nome + " Idade: " + listaNomes[i].idade + "<br>";
+        }
+      }
+    }
+
+    // Função para reiniciar a lista
+    function reiniciar() {
+      listaNomes = [];
+      localStorage.removeItem('listaNomes'); // Remover os dados da Local Storage
+      var mostrarLista = document.getElementById("nm");
+      mostrarLista.innerHTML = "Lista das Criancas: <br>";
+    }
+
+    // Função para limpar a Local Storage (opcional)
+    function limparLocalStorage() {
+      localStorage.removeItem('listaNomes');
+      listaNomes = [];
+      var mostrarLista = document.getElementById("nm");
+      mostrarLista.innerHTML = "Local Storage limpa.";
+    }
+  </script>
+</body>
+</html>

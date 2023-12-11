@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Locadora</title>
+</head>
+<body style="text-align:center;">
+
+    <h1 style="color:rgb(87, 0, 128);">Locadora</h1>
+
+    <p id="Geralminutos">Clique no Botão 'Transformar em horas' para transformar minutos em horas e minutos.</p>
+    Minutos: <input class="mins" id="minutos">
+
+    <br><br>
+
+    <button onclick="horas()">Transformar em Horas</button>
+
+    <button onclick="reiniciar()">Tentar Novamente</button>
+
+    <p id="minutosInput"></p>
+    <script>
+
+
+        var minu = document.getElementById('Geralminutos');
+        var minutos = document.getElementById('minutos');
+        var minutosInput = document.getElementById('minutosInput');
+
+        // Recupere os minutos salvos no Local Storage, se existirem
+        var minutosSalvos = localStorage.getItem('minutosSalvos');
+        if (minutosSalvos) {
+            minutos.value = minutosSalvos;
+        }
+        function horas() {
+            var total = parseInt(minutos.value); // Obtenha o valor do input como um número
+
+            if (!isNaN(total)) {
+                // Salvando os minutos no Local Storage
+                localStorage.setItem('minutosSalvos', total);
+
+                var hrs = Math.floor(total / 60);
+                var min = total % 60;
+                minutosInput.innerHTML = hrs + " Hora(s) e " + min + " Minuto(s)";
+            } else {
+                minutosInput.innerHTML = "Por favor, insira um valor válido de minutos.";
+            }
+        }
+
+        function reiniciar() {
+            minutosInput.innerHTML = "";
+            minutos.value = "";
+            localStorage.removeItem('minutosSalvos'); // Removendo os minutos salvos no Local Storage
+        }
+    </script>
+</body>
+</html>

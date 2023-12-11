@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .cor {
+      width: 50px;
+      height: 50px;
+      margin: 5px;
+      border: 2px solid #000;
+      cursor: move;
+    }
+
+    #canvas {
+      width: 300px;
+      height: 300px;
+      border: 2px solid #000;
+    }
+  </style>
+  <center><h1>Exemplo 1 de API de Drag e Drop</h1></center>
+</head>
+<body>
+<center style="display: flex; flex-direction: row; justify-content: center;">
+  <!-- Caixas coloridas que podem ser arrastadas -->
+  <div class="cor" draggable="true" ondragstart="drag(event)" style="background-color: #3498db;"></div>
+  <div class="cor" draggable="true" ondragstart="drag(event)" style="background-color: #e74c3c;"></div>
+  <div class="cor" draggable="true" ondragstart="drag(event)" style="background-color: #2ecc71;"></div>
+</center>
+<br>
+<!-- Área de soltar centralizada -->
+<center>
+  <div id="canvas" ondrop="drop(event)" ondragover="allowDrop(event)"><h4 style="text-align: center;">Solte Aqui</h4></div>
+</center>
+
+<!-- Script para arrastar e soltar -->
+<script>
+  // Função chamada para permitir a operação de soltar na área alvo
+  function allowDrop(event) {
+    event.preventDefault();
+  }
+
+  // Função chamada ao arrastar uma cor
+  function drag(event) {
+    // Define os dados que serão transferidos ao arrastar (a cor do elemento sendo arrastado)
+    event.dataTransfer.setData("text/plain", event.target.style.backgroundColor);
+  }
+
+  // Função chamada ao soltar uma cor na área de destino
+  function drop(event) {
+    event.preventDefault();
+    // Recupera a cor transferida ao arrastar
+    var cor = event.dataTransfer.getData("text/plain");
+    // Define o fundo da área de destino com a cor arrastada
+    event.target.style.backgroundColor = cor;
+  }
+</script>
+
+</body>
+</html>

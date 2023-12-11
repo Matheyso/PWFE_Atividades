@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Referência Bibliográfica</h1>
+  Nome:<input name="nome" type="text" id="nm"></input>
+  <br><br>
+  <button onclick="GerarCitacao()">
+  Gerar Citação Bibliográfica</button>
+  <p id="nome2"></p>
+  <script>
+    function GerarCitacao(){
+      let text = document.getElementById("nm").value;
+      const myArray = text.split(" ");
+      var nome = myArray[0];
+      var meio = myArray[1];
+      var sobrenome = myArray[2];
+
+
+      document.getElementById("nome2").innerHTML = sobrenome + meio.charAt(0) + nome.charAt(0); ; 
+    }
+  </script>
+</body>
+</html>

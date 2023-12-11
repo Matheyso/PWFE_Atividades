@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brinquedoteca</title>
+</head>
+<body style="text-align:center;">
+  <h1 style="color:rgb(87, 0, 128);">
+    Brinquedoteca
+  </h1>
+  <!--Caixa para inserir nome-->
+  Insira um nome: 
+  <input type="text" id="nome">
+  <br>
+  <br>
+  <!--Caixa para inserir idade-->                                                                                                   
+  Insira uma idade: 
+  <input type="text" id="idade"> 
+  <br>
+  <br>
+  <!--Invoca o método buscar() ao clicar no botão-->
+  <button onclick="buscar()">
+    Buscar
+  </button>
+ <button onclick="mostrarListaNomes()">
+    Mostrar Lista
+  </button>
+  <button onclick="reiniciar()">
+    Reiniciar</button>
+
+  <p id="nm"></p>
+  <p id="reini"></p>
+  <script>
+    var listaNomes = [];
+
+     function buscar(){
+    var nome = document.getElementById("nome").value;
+    var idade = document.getElementById("idade").value;
+
+    // var criança guarda nome e idade
+    var crianca = { nome: nome, idade: idade};
+    
+    //listaNomes puxa var criança para dentro de seu array
+    listaNomes.push(crianca);
+
+    
+    var mostrarLista = document.getElementById("nm");
+    mostrarLista.innerHTML = "Lista das Criancas: <br>";
+    
+    for(var i = 0; i < listaNomes.length; i++) {
+
+      //for lê variavel i varre e imprime
+      mostrarLista.innerHTML += "Nome: " + listaNomes[i].nome + " Idade: " + listaNomes[i].idade + "<br>";
+    }
+    }
+    function reiniciar(){
+          document.getElementById('nm').value = "";
+        }
+    function mostrarListaNomes(){
+      
+    }
+
+    
+  </script>
+
+</body>
+</html>

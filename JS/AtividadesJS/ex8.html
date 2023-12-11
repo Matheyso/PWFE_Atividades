@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Programa Validar Senha</title>
+</head>
+<body>
+  <h1>Programa Validar Senha</h1>
+  Senha:<input name="senha" type="text" id="senha"></input>
+  <br><br>
+  <button onclick="verificarSenha()">Verificar Senha</button>
+  <button onclick="limpar()">Tentar denovo</button>
+  <p id="mostrarSenha"></p>
+  <script>
+      function verificarSenha() {
+  let senha = document.getElementById("senha").value;
+  if (senha.length < 8 || senha.length > 15) {  
+      document.getElementById("mostrarSenha").innerHTML = "Senha deve conter no mínimo 8 e no máximo 15 caracteres";
+
+  } 
+  if (!/[A-Z]/.test(senha)){
+      document.getElementById("mostrarSenha").innerHTML = "Mínimo 1 letras maiúsculas na senha";
+
+  }
+  if (!/[a-z]/.test(senha)){
+      document.getElementById("mostrarSenha").innerHTML = "Mínimo 1 letras minusculas na senha";
+  }
+  if (!/\d/.test(senha)) {
+      document.getElementByI("mostrarSenha").innerHTML = "Precisa de números na senha";
+  }
+  if (!/(?=.*[$*&@#])/.test(senha)) {
+      document.getElementById("mostrarSenha").innerHTML = "Minimo de 1 caractere especial";
+  } else {
+      document.getElementById("mostrarSenha").innerHTML = "senha valida";
+  }
+function limpar() {
+  document.getElementById("mostrarSenha").innerHTML = "";
+}
+}
+  </script>
+</body>
+</html>

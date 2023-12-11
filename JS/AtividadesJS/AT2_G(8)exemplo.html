@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brinquedoteca</title>
+</head>
+<body style="text-align:center;">
+  <h1 style="color:rgb(87, 0, 128);">
+    Brinquedoteca
+  </h1>
+<input class="search-crianca" type="text">
+<center>
+<ul class="crianca-list" id="crianca">
+  <li>Matheus</li>
+  <li>Bernardo</li>
+  <li>Pedro</li>
+  <li>Ulisses</li>
+  <li>Mario</li>
+  <li>Manuela</li>
+  <li>Marcelo</li>
+  <li>Antonio</li>
+  <li>Kiko</li>
+  <li>Carla</li>
+  <li>Fernanda</li>
+</ul>
+</center>
+<style>
+li{
+  padding: 5px;
+  margin: 0px;
+  background: #d3d3d3;
+  width: 200px;
+  border: 1px solid white;
+}
+</style>
+<script>
+  let inputElement = document.querySelector("input")
+  let listElement = document.querySelector("ul")
+  let itemElement = listElement.querySelectorAll("li")
+
+inputElement.addEventListener("input", (e) => {
+  let inputed = e.target.value.toLowerCase()
+  itemElement.forEach((li) => {
+    let text = li.textContent.toLowerCase()
+    if(text.includes(inputed)){
+      li.style.display = "block"
+    }else{
+      li.style.display = "none"
+    }
+  })
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    #ParaFazer, #Cocluido {
+      display: flex;
+      justify-content: center;
+      list-style-type: none;
+      padding: 10px;
+      width: 200px;
+      border: 2px solid #000;
+      border-radius: 5px;
+      cursor: move;
+    }
+
+    #ParaFazer li, #Cocluido li {
+      display: flex;
+      justify-content: center;
+      margin: 5px;
+      background-color: #b134db;
+      color: #fff;
+      padding: 8px;
+      cursor: move;
+    }
+  </style>
+    <center><h1>Exemplo 2 de API de Drag e Drop</h1></center>
+</head>
+
+  <center>
+  <!-- Lista onde as tarefas pendentes serão exibidas -->
+  <h2>Tarefas Pendentes</h2>
+  <ul id="ParaFazer" ondrop="drop(event, 'ParaFazer')" ondragover="allowDrop(event)"></ul>
+  
+  <!-- Lista onde as tarefas concluídas serão exibidas -->
+  <h2>Tarefas Concluídas</h2>
+  <ul id="Cocluido" ondrop="drop(event, 'Cocluido')" ondragover="allowDrop(event)"></ul>
+  </center>
+  <script>
+    // Função chamada para permitir a operação de soltar na lista alvo
+    function allowDrop(event) {
+      event.preventDefault();
+    }
+    // Função chamada ao arrastar um item
+    function drag(event) {
+      event.dataTransfer.setData("text/plain", event.target.textContent);
+    }
+
+    
+    function drop(event, listId) {
+      event.preventDefault();
+      var data = event.dataTransfer.getData("text/plain");
+      var list = document.getElementById(listId);
+      var newItem = document.createElement("li");
+      newItem.textContent = data;
+      list.appendChild(newItem);
+    }
+  </script>
+
+  <script>
+    // Inicializando listas com algumas tarefas
+    var ParaFazer = document.getElementById("ParaFazer");
+    var Cocluido = document.getElementById("Cocluido");
+
+    var tarefas = ["Arrumar cama", "Lavar Louça", "Fazer Lição"];
+
+    
+    tarefas.forEach(function(task) {
+      var listItem = document.createElement("li");
+      listItem.textContent = task;
+      listItem.draggable = true;  // Adiciona a capacidade de ser arrastado
+      listItem.addEventListener("dragstart", drag);  // Adiciona o evento de drag
+      ParaFazer.appendChild(listItem);
+    });
+  </script>
+</body>
+</html>

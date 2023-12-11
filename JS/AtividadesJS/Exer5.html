@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Programa Par ou Impar</h1>
+  Numero:<input name="numero" type="text" id="num"></input>
+  <br><br>
+  <button onclick="ParOuImpar()">
+  Verificar se é Par ou Impar</button>
+  <p id="numero"></p>
+
+  <script>
+    function ParOuImpar(){
+      var num = document.getElementById("num").value;
+ 
+if (num % 2 == 0) {
+  document.getElementById("numero").innerHTML="par";
+} else {
+  document.getElementById("numero").innerHTML="impar";
+}
+    }
+  </script>
+</body>
+</html>

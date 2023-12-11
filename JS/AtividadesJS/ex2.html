@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Exemplo 2 </title>
+    <style>
+    
+
+        .tamanho{
+            width: 400px;
+            height: auto;
+        }
+
+    </style>
+</head>
+<body onload="loadFunction()">
+
+        <!--NOME: <input type="text" id="myInput" onblur="blurFunction()">
+        -->
+        <p> Modificar o texto </p>
+        Entre com o texto: <input type="text" name="txt" value="OI"
+        onchange="myFunction(this.value)">
+
+        <p id="myP" onmousedown="mouseDown()" onmouseup="mouseUp()">
+        Ao pressionar o mouse sobre esse txt a cor vai ser alterada
+        </p>
+
+
+        <div onmouseover="coordenadasFigura(event)" onmouseout="clearCoor()">
+        <img class="tamanho" src="IMG/9983099929022a11de450a24654e73b2.jpg">
+        </div>
+
+        <p id="demo3"> </p>
+
+        <form name="form1" action="" onsubmit="submitFunction(campo1, campo2)" method="post"
+    onreset="alert('todos os campos seram apagados!')"> 
+       Caso 1: <input type="text" name="campo1">     
+        
+
+        <br> <br>
+       Caso 2: <input type="text" name="campo2">
+       
+       <input type="submit" value="Entrar">
+       <input type="reset">
+
+      </form>
+
+    <script src="JS/script2.js">   </script>
+
+
+
+</body>
+</html>
